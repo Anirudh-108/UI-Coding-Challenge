@@ -1,0 +1,104 @@
+<div class="mr-2">
+  <div class="card">
+    <form [formGroup]="userForm" (submit)="onAdd()">
+      <div class="card-header">Add New Product</div>
+      <div class="card-body">
+        <div class="alert alert-success" role="alert" *ngIf="successMsg">
+          {{ successMsg }}
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="errorMsg">
+          {{ errorMsg }}
+        </div>
+
+        <div class="mb-2">
+          <label>Enter Title: </label>
+          <input type="text" class="form-control" formControlName="title" />
+          <div
+            *ngIf="
+              userForm.get('title').invalid && userForm.get('title').touched
+            "
+          >
+            <small *ngIf="userForm.get('title').errors['required']"
+              >title is required</small
+            >
+          </div>
+        </div>
+
+        <div class="mb-2">
+          <div class="form-group">
+            <label for="policy_type">Select Category</label>
+            <select id="category" name="category" formControlName="category">
+              <option value="" disabled>Select Policy Type</option>
+              <option value="LAPTOP">Laptop</option>
+              <option value="DESKTOP">Desktop</option>
+              <option value="TABLET">Tablet</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="mb-2">
+          <label>Enter Price: </label>
+          <input type="number" class="form-control" formControlName="price" />
+          <div
+            *ngIf="
+              userForm.get('price').invalid && userForm.get('price').touched
+            "
+          >
+            <small *ngIf="userForm.get('price').errors['required']"
+              >price is required</small
+            >
+          </div>
+        </div>
+
+        <div class="mb-2">
+          <label>Enter Description: </label>
+          <textarea
+          id="description"
+          rows="4"
+          maxlength="1000"
+          formControlName="description"
+        ></textarea>
+          <div
+            *ngIf="
+              userForm.get('description').invalid &&
+              userForm.get('description').touched
+            "
+          >
+            <small *ngIf="userForm.get('description').errors['required']"
+              >Description is required</small
+            >
+          </div>
+        </div>
+
+        <div class="mb-2">
+          <label>Enter Quantity: </label>
+          <input
+            type="number"
+            class="form-control"
+            formControlName="quantity"
+          />
+          <div
+            *ngIf="
+              userForm.get('quantity').invalid &&
+              userForm.get('quantity').touched
+            "
+          >
+            <small *ngIf="userForm.get('quantity').errors['required']"
+              >Quantity is required</small
+            >
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <input
+          type="submit"
+          value="Add Product"
+          [disabled]="userForm.invalid"
+        />
+        &nbsp;
+        <button class="btn btn-info" routerLink="/product-list">Product List</button>
+      </div>
+      
+    </form>
+  </div>
+</div>

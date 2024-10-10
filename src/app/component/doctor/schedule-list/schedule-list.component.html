@@ -1,0 +1,66 @@
+<app-doctor-navbar></app-doctor-navbar>
+
+<div class="container-fluid mt-4">
+    <div class="row">
+        <div class="col-sm-3">
+            <button type="button" class="btn btn-primary btn-lg mt-4 mb-4 " (click)="filterByCurrentWeek()" style="width: 80%;">Current Week</button>
+            <br />
+            <button type="button" class="btn btn-secondary btn-lg mb-4" (click)="filterByToday()" style="width: 80%;">Today</button>
+            <br />
+            <button type="button" class="btn btn-info btn-lg mb-4" style="width: 80%;">Tomorrow</button>
+            <br />
+            <button type="button" class="btn btn-warning btn-lg mb-4" style="width: 80%;">Yesterday</button>
+            <br />
+            <button type="button" class="btn btn-danger btn-lg mb-4" style="width: 80%;" (click)="getAll()">Get All Appointments</button>
+
+        </div>
+        <div class="col-lg-9">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col" class="text-center">#</th>
+                    <th scope="col"  >Date of Appt</th>
+                    <th scope="col">Day of Appt</th>
+                    <th scope="col">Slot Start time</th>
+                    <th scope="col">Slot End time</th>
+                    <th scope="col">Number fo Appts</th>
+                    <th scope="col" class="text-center">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let s of schedule">
+                    <td class="text-center">SystemID: {{s.id}} </td>
+                    <th scope="row" class="text-center">{{s.date}}</th>
+                    <td class="text-center">{{s.day}} </td>
+                    <td class="text-center"> {{s.fromTime}}</td>
+                    <td class="text-center">{{s.toTime}} </td>
+                    <td class="text-center">{{s.numberOfAppt}}</td>
+                    <td>
+                        <button type="button" class="btn btn-primary btn-sm" (click)="onEdit(s.id)">Edit</button> 
+                        &nbsp;&nbsp;&nbsp;
+                        <button type="button" class="btn btn-secondary btn-sm">Delete</button>
+                    </td>
+                  </tr>
+                   
+                </tbody>
+              </table>
+
+              <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                  <li class="page-item">
+                    <button class="page-link"  [disabled]="first == true" (click)="onPrev()"> Prev</button>
+                  </li>
+                  <span *ngFor="let n of numArry">
+                    <button class="page-link"   (click)="onPageNumberClick(n)"> {{n+1}}</button>
+                  </span>
+                  
+                   
+                  <li class="page-item">
+                    <button class="page-link"  [disabled]="last == true" (click)="onNext()"> Next</button>
+                  </li>
+                </ul>
+              </nav>
+        </div>
+
+    </div>
+</div>

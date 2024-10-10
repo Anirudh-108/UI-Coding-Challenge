@@ -1,0 +1,50 @@
+<div class="mr-2">
+    <div class="card">
+      <form [formGroup]="userForm" (submit)="onSubmit()">
+       <div class="card-header">
+         Add New User 
+       </div>
+       <div class="card-body"> 
+          <div class="mb-2"> 
+             <label>Enter name: </label>
+             <input type="text" class="form-control" formControlName="name" />
+             <div *ngIf="userForm.get('name').invalid && userForm.get('name').touched"> 
+                 <small *ngIf="userForm.get('name').errors['required']">name is required</small>
+                 <small *ngIf="userForm.get('name').errors['minlength']">name should be of atleast 5 letters</small>
+             </div>
+          </div>
+          <div class="mb-2"> 
+              <label>Enter email: </label>
+              <input type="email" class="form-control" formControlName="email"/>
+              <div *ngIf="userForm.get('email').invalid && userForm.get('email').touched"> 
+                 <small *ngIf="userForm.get('email').errors['email']">email is invalid</small>
+              </div>
+           </div>
+           <div  class="mb-2"> 
+              <label>Enter city: </label>
+              <input type="text" class="form-control" formControlName="city"/>
+              <div *ngIf="userForm.get('city').invalid && userForm.get('city').touched"> 
+                 <small *ngIf="userForm.get('city').errors['required']">city is required</small>
+              </div>
+           </div>
+           <div  class="mb-2"> 
+              <label>Enter company: </label>
+              <input type="text" class="form-control" formControlName="company" />
+              <div *ngIf="userForm.get('company').invalid && userForm.get('company').touched"> 
+                 <small *ngIf="userForm.get('company').errors['required']">company is required</small>
+              </div>
+           </div>
+           <div  class="mb-2"> 
+              <label>Enter website: </label>
+              <input type="text" class="form-control" formControlName="website" />
+              <div *ngIf="userForm.get('website').invalid && userForm.get('website').touched"> 
+                 <small *ngIf="userForm.get('website').errors['pattern']">website is invalid</small>
+              </div>
+           </div>
+       </div>
+       <div class="card-footer"> 
+         <input type="submit" value="Add user" [disabled]="userForm.invalid"> 
+       </div>
+       </form>
+    </div>
+  </div>

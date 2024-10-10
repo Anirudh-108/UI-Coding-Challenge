@@ -1,0 +1,74 @@
+<app-doctor-navbar></app-doctor-navbar>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">Edit Appointment Schedule</div>
+        <div class="card-body">
+          <div class="alert alert-dark" role="alert" *ngIf="successMsg">
+            {{ successMsg }}
+          </div>
+          <div class="alert alert-primary" role="alert" *ngIf="errorMsg">
+            {{ errorMsg }}
+          </div>
+          <div>
+            <label>Select Date: </label>
+            <input
+              class="form-control"
+              type="date"
+              [(ngModel)]="apptdate"
+              (change)="resetmsg()"
+            />
+          </div>
+          <div>
+            <label>Select Day: </label>
+            <select
+              class="form-control"
+              [(ngModel)]="day"
+              (change)="resetmsg()"
+            >
+              <option *ngFor="let d of days" value="{{ d }}">
+                {{ d }}
+              </option>
+            </select>
+          </div>
+          <div>
+            <label>Select Slot Start Time: </label>
+            <input
+              class="form-control"
+              type="time"
+              [(ngModel)]="from"
+              (change)="resetmsg()"
+            />
+          </div>
+          <div>
+            <label>Select Slot End Time: </label>
+            <input
+              class="form-control"
+              type="time"
+              [(ngModel)]="to"
+              (change)="resetmsg()"
+            />
+          </div>
+          <div>
+            <label>Number of Appts for this Slot: </label>
+            <input
+              class="form-control"
+              type="number"
+              [(ngModel)]="numOfAppt"
+              (change)="resetmsg()"
+            />
+          </div>
+        </div>
+        <div class="card-footer">
+          <button (click)="onClick()">Edit Schedule</button>
+          <button (click)="onShowClick()" *ngIf="show == true">
+            Go to Schedule List
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3"></div>
+  </div>
+</div>

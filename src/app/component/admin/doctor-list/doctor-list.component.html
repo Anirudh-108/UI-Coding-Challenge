@@ -1,0 +1,27 @@
+<app-admin-navbar></app-admin-navbar>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col" style="width: 5%">#</th>
+      <th scope="col" style="width: 15%">Name</th>
+      <th scope="col" style="width: 20%">Specialization</th>
+      <th scope="col" style="width: 25%">Username</th>
+      <th scope="col" class="text-center">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let doc of doctors">
+      <th scope="row">{{ doc.id }}</th>
+      <td>{{ doc.name }}</td>
+      <td>{{ doc.doctorSpecialization }}</td>
+      <td>{{ doc.user.username }}</td>
+      <td>
+        <button class="btn btn-info bn-small">View Schedule</button>
+        &nbsp;&nbsp;&nbsp;
+        <button class="btn btn-danger bn-small">Archive</button>
+        &nbsp;&nbsp;&nbsp;
+        <button class="btn btn-secondary bn-small">edit</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

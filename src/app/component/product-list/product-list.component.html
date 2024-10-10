@@ -1,0 +1,49 @@
+<div class="nav-div">
+    <h2 class="heading">All Products</h2>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Title</th>
+        <th scope="col">Category</th>
+        <th scope="col">Description</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of products">
+        <td>{{p.id}}</td>
+        <td>{{p.title}}</td>
+        <td>{{p.category}}</td>
+        <!-- <td>{{p.description}}</td> -->
+        <button><div (click)="onDescription(p.description)">See more</div></button>
+        <td>{{p.price}}</td>
+        <td>{{p.quantity}}</td>
+        <td>
+          <button class="btn btn-success" (click)="onEdit(p.id)">Edit</button>
+           &nbsp;&nbsp;
+          <button class="btn btn-danger" (click)="onDelete(p.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li class="page-item">
+        <button class="page-link"  [disabled]="first == true" (click)="onPrev()"> Prev</button>
+      </li>
+      <span *ngFor="let n of numArry">
+        <button class="page-link"   (click)="onPageNumberClick(n)"> {{n+1}}</button>
+      </span>
+      <li class="page-item">
+        <button class="page-link"  [disabled]="last == true" (click)="onNext()"> Next</button>
+      </li>
+    </ul>
+  </nav>
+
+<button class="btn btn-info" routerLink="/add-product">Add Product</button>
